@@ -17,6 +17,7 @@ body {
     grid-template-columns: repeat(21, 1fr);
 }
 
+
 .snake {
     background-color: green;
     border: .25vmin solid black;
@@ -27,18 +28,13 @@ body {
     border: .25vmin solid black;
 }
 
-.controls {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; 
 }
 
-.controls button {
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
-    margin: 5px;
-}
