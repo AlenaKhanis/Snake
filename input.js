@@ -1,4 +1,3 @@
-
 let inputDirection = { x: 0, y: 0 };
 let lastTouchX = 0;
 let lastTouchY = 0;

@@ -9,14 +9,14 @@ body {
 }
 
 #game-board {
-    background-color:cadetblue;
+    background-color: cadetblue;
     width: 100vmin;
     height: 100vmin;
     display: grid;
     grid-template-rows: repeat(21, 1fr);
     grid-template-columns: repeat(21, 1fr);
+    box-sizing: border-box;
 }
-
 
 .snake {
     background-color: green;
@@ -35,6 +35,5 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden; 
+    overflow: hidden;
 }
-
