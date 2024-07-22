@@ -93,10 +93,10 @@ body {
 }
 
 /* Mobile styles */
-@media (max-width: 1080px) {
+@media (max-width: 768px) {
     body {
-        flex-direction: column; 
-        overflow: hidden;
+        flex-direction: column !important; 
+        overflow: hidden !important;
     }
 
     #game-board {
@@ -105,21 +105,21 @@ body {
     }
 
     #score, #best-score {
-        position: static;
-        margin-top: 10px;
-        font-size: 18px; 
-        background-color: red;
+        position: static !important;
+        margin-top: 10px !important;
+        font-size: 18px !important; 
+        background-color: red !important;
     }
 
     #reset-button {
-        position: static;
-        margin-top: 20px;
-        font-size: 16px; 
+        position: static !important;
+        margin-top: 20px !important;
+        font-size: 16px !important; 
     }
 
     #game-over {
-        position: static;
-        margin-top: 20px;
-        font-size: 20px; 
+        position: static !important;
+        margin-top: 20px !important;
+        font-size: 20px !important; 
     }
 }
