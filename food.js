@@ -6,7 +6,7 @@ let bestScoreElement = document.getElementById('best-score');
 
 export let score = 0;
 let bestScore = parseInt(localStorage.getItem('bestScore')) || 0;
-
+let eatSound = document.getElementById('eat-sound');
 bestScoreElement.textContent = `Best Score: ${bestScore}`;
 
 export function updateFood() {
@@ -18,6 +18,8 @@ export function updateFood() {
         updateBestScore();
 
         food = randomFoodPosition();
+
+        eatSound.play();
     }
 }
 

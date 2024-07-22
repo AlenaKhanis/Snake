@@ -91,3 +91,26 @@ body {
 .hidden {
     display: none;
 }
+
+
+@media (max-width: 767px) {
+    #game-board {
+        width: 90vmin;
+        height: 90vmin;
+    }
+
+    #score, #best-score {
+        position: static;
+        margin-top: 10px;
+    }
+
+    #reset-button {
+        position: static;
+        margin-top: 20px;
+    }
+
+    #game-over {
+        position: static;
+        margin-top: 20px;
+    }
+}
