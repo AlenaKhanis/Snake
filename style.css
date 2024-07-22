@@ -5,35 +5,89 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: black;
+    background-color: #a4a7ab; 
+    font-family: 'Courier New', Courier, monospace; 
+    overflow: hidden;
 }
 
 #game-board {
-    background-color: cadetblue;
-    width: 100vmin;
-    height: 100vmin;
+    background-color: #7a7d82; 
+    width: 80vmin;
+    height: 80vmin;
     display: grid;
     grid-template-rows: repeat(21, 1fr);
     grid-template-columns: repeat(21, 1fr);
+    border: 3vmin solid #515457; 
     box-sizing: border-box;
+    position: relative;
 }
 
 .snake {
-    background-color: green;
-    border: .25vmin solid black;
+    background-color: #1d1e1f; 
+    border: 0.1vmin solid #000; 
 }
 
 .food {
-    background-color: red;
-    border: .25vmin solid black;
+    background-color: #1d1e1f; 
+    border: 0.1vmin solid #000;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+ #best-score {
+    position: absolute;
+    top: 0vmin;
+    font-size: 3vmin; 
+    color: #000; 
+    background-color: #cfd1d4; 
+    padding: 0.5vmin; 
+    border-radius: 1vmin; 
+    border: 0.2vmin solid #515457; 
+    text-align: center;
+    width: calc(100% - 2vmin);
+    left: 1vmin;
+}
+#score {
+    position: absolute;
+    top: 5vmin;
+    font-size: 3vmin; 
+    color: #000; 
+    background-color: #cfd1d4;
+    padding: 0.5vmin; 
+    border-radius: 1vmin; 
+    border: 0.2vmin solid #515457; 
+    text-align: center;
+    width: calc(100% - 2vmin);
+    left: 1vmin;
+}
+
+#reset-button {
+    position: absolute;
+    top: 25vmin;
+    padding: 1vmin 2vmin;
+    font-size: 2vmin;
+    background-color: #313131;
+    color: white;
+    border: none;
+    border-radius: 1vmin;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace; 
+
+}
+
+#reset-button:hover {
+    background-color: #000000;
+}
+
+#game-over {
+    position: absolute;
+    top: 20vmin;
+    font-size: 4vmin;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.hidden {
+    display: none;
 }

@@ -1,4 +1,5 @@
 let inputDirection = { x: 0, y: 0 };
+
 let lastTouchX = 0;
 let lastTouchY = 0;
 
@@ -6,8 +7,8 @@ export function getInputDirection() {
     return inputDirection;
 }
 
-export function setInputDirection(direction) {
-    inputDirection = direction;
+export function resetInputDirection() {
+    inputDirection = { x: 0, y: 0 };
 }
 
 window.addEventListener('keydown', e => {  
@@ -38,20 +39,28 @@ window.addEventListener('keydown', e => {
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 
-function handleTouchStart(evt) {
-    const firstTouch = evt.touches[0];                                      
+//captures the x and y coordinates of the initial touch and stores them in lastTouchX and lastTouchY.
+function handleTouchStart(event) {
+    
+    const firstTouch = event.touches[0];                                
     lastTouchX = firstTouch.clientX;                                      
     lastTouchY = firstTouch.clientY;                                      
 } 
 
-function handleTouchMove(evt) {
+//calculates the movement direction by comparing the current touch position to the initial touch position and then updates the direction of the snake accordingly.
+function handleTouchMove(event) {
+
     if (!lastTouchX || !lastTouchY) {
         return;
     }
 
-    const touch = evt.touches[0];
+    const touch = event.touches[0];
     const deltaX = touch.clientX - lastTouchX;
     const deltaY = touch.clientY - lastTouchY;
+    
+
+    console.log('delta X: ',deltaX);
+    console.log('delta Y: ',deltaY);
 
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
         if (deltaX > 0) {
