@@ -92,25 +92,32 @@ body {
     display: none;
 }
 
-
 @media (max-width: 767px) {
+    body {
+        flex-direction: column; 
+        overflow: hidden;
+    }
+
     #game-board {
-        width: 90vmin;
-        height: 90vmin;
+        width: 95vmin;
+        height: 95vmin;
     }
 
     #score, #best-score {
         position: static;
         margin-top: 10px;
+        font-size: 18px; 
     }
 
     #reset-button {
         position: static;
         margin-top: 20px;
+        font-size: 16px; 
     }
 
     #game-over {
         position: static;
         margin-top: 20px;
+        font-size: 20px; 
     }
 }
