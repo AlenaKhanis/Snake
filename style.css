@@ -100,14 +100,15 @@ body {
     }
 
     #game-board {
-        width: 95vmin;
-        height: 95vmin;
+        width: 95vw !important;
+        height: 80vh !important;
     }
 
     #score, #best-score {
         position: static;
         margin-top: 10px;
         font-size: 18px; 
+        background-color: red;
     }
 
     #reset-button {
