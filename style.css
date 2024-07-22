@@ -93,7 +93,7 @@ body {
 }
 
 /* Mobile styles */
-@media (max-width: 767px) {
+@media (max-width: 1080px) {
     body {
         flex-direction: column; 
         overflow: hidden;
