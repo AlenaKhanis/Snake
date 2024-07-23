@@ -55,5 +55,6 @@ function resetGame() {
     document.getElementById('game-over').textContent = '';
     resetButton.style.display = 'none';
     window.requestAnimationFrame(main);
+    Snake_speed
    
 }

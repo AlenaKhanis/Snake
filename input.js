@@ -1,40 +1,38 @@
 let inputDirection = { x: 0, y: 0 };
+let lastInputDirection = { x: 0, y: 0 };
 
 let lastTouchX = 0;
 let lastTouchY = 0;
 
 export function getInputDirection() {
+    lastInputDirection = inputDirection;
     return inputDirection;
-}
+  }
 
 export function resetInputDirection() {
     inputDirection = { x: 0, y: 0 };
 }
 
-window.addEventListener('keydown', e => {  
+window.addEventListener('keydown', e => {
     switch (e.key) {
-        case 'ArrowUp':
-        case 'w':
-            if (inputDirection.y === 1) return;
-            inputDirection = { x: 0, y: -1 };
-            break;
-        case 'ArrowDown':
-        case 's':
-            if (inputDirection.y === -1) return;
-            inputDirection = { x: 0, y: 1 };
-            break;
-        case 'ArrowLeft':
-        case 'a':
-            if (inputDirection.x === 1) return;
-            inputDirection = { x: -1, y: 0 };
-            break;
-        case 'ArrowRight':
-        case 'd':
-            if (inputDirection.x === -1) return;
-            inputDirection = { x: 1, y: 0 };
-            break;
+      case 'ArrowUp':
+        if (lastInputDirection.y !== 0) break;
+        inputDirection = { x: 0, y: -1 };
+        break;
+      case 'ArrowDown':
+        if (lastInputDirection.y !== 0) break;
+        inputDirection = { x: 0, y: 1 };
+        break;
+      case 'ArrowLeft':
+        if (lastInputDirection.x !== 0) break;
+        inputDirection = { x: -1, y: 0 };
+        break;
+      case 'ArrowRight':
+        if (lastInputDirection.x !== 0) break;
+        inputDirection = { x: 1, y: 0 };
+        break;
     }
-});
+  });
 
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
