@@ -2,7 +2,6 @@ import { getInputDirection } from "./input.js";
 
 export const Snake_speed = 7;
 export const snakeBody = [{ x: 11, y: 11 }];
-let newSegments = 0;
 
 
 export const gameState = {
@@ -12,7 +11,7 @@ export const gameState = {
 export function updateSnake() {
   if (gameState.gameover) return;
 
-  addSegments();
+
   const inputDirection = getInputDirection();
 
   for (let i = snakeBody.length - 2; i >= 0; i--) {
@@ -26,12 +25,10 @@ export function updateSnake() {
     gameState.gameover = true;
   }
 
-
-
 }
 
 export function drawSnake(gameBoard) {
-  gameBoard.innerHTML = '';
+
   snakeBody.forEach(bodyPart => {
     const snakeElement = document.createElement('div');
     snakeElement.style.gridRowStart = bodyPart.y;
@@ -43,10 +40,10 @@ export function drawSnake(gameBoard) {
 
 function checkCollision() {
   const headPosition = snakeBody[0];
-  const hitLeftWall = headPosition.x < 1;
-  const hitRightWall = headPosition.x > 25;
-  const hitTopWall = headPosition.y < 1;
-  const hitBottomWall = headPosition.y > 21;
+  const hitLeftWall = headPosition.x <= 1;
+  const hitRightWall = headPosition.x > 24;
+  const hitTopWall = headPosition.y <= 1;
+  const hitBottomWall = headPosition.y > 20;
   const selfCollision = hasSelfCollision();
 
   return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall || selfCollision;
@@ -60,13 +57,4 @@ export function hasSelfCollision() {
   });
 }
 
-export function expandSnake(amount) {
-  newSegments += amount;
-}
 
-function addSegments() {
-  for (let i = 0; i < newSegments; i++) {
-    snakeBody.push({ ...snakeBody[snakeBody.length - 1] });
-  }
-  newSegments = 0;
-}
