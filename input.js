@@ -55,10 +55,7 @@ function handleTouchMove(event) {
     const touch = event.touches[0];
     const deltaX = touch.clientX - lastTouchX;
     const deltaY = touch.clientY - lastTouchY;
-    
 
-    console.log('delta X: ',deltaX);
-    console.log('delta Y: ',deltaY);
 
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
         if (deltaX > 0) {

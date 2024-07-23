@@ -53,7 +53,7 @@ function randomFoodPosition() {
     do {
         newFoodPosition = {
             x: Math.floor(Math.random() * 20) + 1,
-            y: Math.floor(Math.random() * 20) + 1
+            y: Math.floor(Math.random() * 24) + 1
         };
     } while (snakeBody.some(snakePart => 
         snakePart.x === newFoodPosition.x && snakePart.y === newFoodPosition.y

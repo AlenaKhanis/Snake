@@ -1,31 +1,60 @@
 import { getInputDirection } from "./input.js";
 
-export const Snake_speed = 7;
+export let Snake_speed = 6;
 export const snakeBody = [{ x: 11, y: 11 }];
+
+export let elapsTime = 0;
+let speedIncreaseInterval = 6000;
+let speedIncrease = 0.2;
 
 
 export const gameState = {
   gameover: false
 };
 
-export function updateSnake() {
+export function setSnakeSpeed(speed) {
+  Snake_speed = speed;
+}
+
+export function updateSnake(deltaTime) {
   if (gameState.gameover) return;
 
-
   const inputDirection = getInputDirection();
+  
+  const newHeadPosition = {
+    x: snakeBody[0].x + inputDirection.x,
+    y: snakeBody[0].y + inputDirection.y
+  };
+
+
+  if (checkCollision(newHeadPosition)) {
+    gameState.gameover = true;
+    return;
+  }
 
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     snakeBody[i + 1] = { ...snakeBody[i] };
   }
+  snakeBody[0] = newHeadPosition;
 
-  snakeBody[0].x += inputDirection.x;
-  snakeBody[0].y += inputDirection.y;
+  elapsTime += deltaTime;
 
-  if (checkCollision()) {
-    gameState.gameover = true;
+  if (elapsTime > speedIncreaseInterval) {
+    Snake_speed += speedIncrease;
+    elapsTime = 0;
   }
-
 }
+
+function checkCollision(position) {
+  const hitLeftWall = position.x < 1;
+  const hitRightWall = position.x > 24;
+  const hitTopWall = position.y < 1;
+  const hitBottomWall = position.y > 20;
+  const selfCollision = hasSelfCollision(position);
+
+  return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall || selfCollision;
+}
+
 
 export function drawSnake(gameBoard) {
 
@@ -38,23 +67,13 @@ export function drawSnake(gameBoard) {
   });
 }
 
-function checkCollision() {
-  const headPosition = snakeBody[0];
-  const hitLeftWall = headPosition.x <= 1;
-  const hitRightWall = headPosition.x > 24;
-  const hitTopWall = headPosition.y <= 1;
-  const hitBottomWall = headPosition.y > 20;
-  const selfCollision = hasSelfCollision();
 
-  return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall || selfCollision;
-}
-
-export function hasSelfCollision() {
-  const head = snakeBody[0];
+export function hasSelfCollision(position) {
   return snakeBody.some((bodyPart, index) => {
-    if (index === 0) return false;
-    return bodyPart.x === head.x && bodyPart.y === head.y;
+    if (index === 0) return false; 
+    return bodyPart.x === position.x && bodyPart.y === position.y;
   });
 }
+
 
 

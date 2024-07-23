@@ -1,4 +1,4 @@
-import { Snake_speed, updateSnake, drawSnake, snakeBody, gameState } from './snake.js';
+import { Snake_speed, updateSnake, drawSnake, snakeBody, gameState , elapsTime, setSnakeSpeed } from './snake.js';
 import { drawFood, updateFood , resetScore , resetFood } from './food.js';
 import {resetInputDirection} from './input.js';
 
@@ -11,31 +11,30 @@ const scoreElement = document.getElementById('score');
 resetButton.addEventListener('click', resetGame);
 
 function main(currentTime) {
-    if (gameState.gameover) return;
-
-    const lastTimeRenderedSeconds = (currentTime - lastTime) / 1000;
-    window.requestAnimationFrame(main);
-
-    if (lastTimeRenderedSeconds < 1 / Snake_speed) return;
-
-    lastTime = currentTime;
-
-    update();
-    draw();
-
     if (gameState.gameover) {
-        console.log('Game Over');
-        document.getElementById('game-over').textContent = 'Game Over';
-        resetButton.style.display = 'block';
+      document.getElementById('game-over').textContent = 'Game Over';
+      resetButton.style.display = 'block';
+      return;
     }
-}
+  
+    const deltaTime = currentTime - lastTime; 
+    window.requestAnimationFrame(main);
+  
+    if (deltaTime < 1000 / Snake_speed) return;
+  
+    lastTime = currentTime;
+  
+    update(deltaTime);
+    draw();
+  }
 
 window.requestAnimationFrame(main);
 
-function update() {
-    updateSnake();
+function update(deltaTime) {
+    updateSnake(deltaTime);
     updateFood();
-}
+  }
+  
 
 function draw() {
     gameBoard.innerHTML = '';
@@ -54,7 +53,6 @@ function resetGame() {
     scoreElement.textContent = 'Score: 0';
     document.getElementById('game-over').textContent = '';
     resetButton.style.display = 'none';
+    setSnakeSpeed(6);
     window.requestAnimationFrame(main);
-
-   
-}
+  }
