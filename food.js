@@ -52,8 +52,8 @@ function randomFoodPosition() {
     let newFoodPosition;
     do {
         newFoodPosition = {
-            x: Math.floor(Math.random() * 20) + 1,
-            y: Math.floor(Math.random() * 24) + 1
+            x: Math.floor(Math.random() * 25) + 1 ,
+            y: Math.floor(Math.random() * 21) + 1
         };
     } while (snakeBody.some(snakePart => 
         snakePart.x === newFoodPosition.x && snakePart.y === newFoodPosition.y

@@ -1,11 +1,13 @@
 import { getInputDirection } from "./input.js";
+import { score } from "./food.js";
 
 export let Snake_speed = 6;
 export const snakeBody = [{ x: 11, y: 11 }];
 
-export let elapsTime = 0;
-let speedIncreaseInterval = 6000;
+let lastScoreForSpeedIncrease = 0; 
+const pointsToIncreaseSpeed = 50;
 let speedIncrease = 0.2;
+
 
 
 export const gameState = {
@@ -16,7 +18,7 @@ export function setSnakeSpeed(speed) {
   Snake_speed = speed;
 }
 
-export function updateSnake(deltaTime) {
+export function updateSnake() {
   if (gameState.gameover) return;
 
   const inputDirection = getInputDirection();
@@ -37,19 +39,19 @@ export function updateSnake(deltaTime) {
   }
   snakeBody[0] = newHeadPosition;
 
-  elapsTime += deltaTime;
+  
 
-  if (elapsTime > speedIncreaseInterval) {
+  if (score >= lastScoreForSpeedIncrease + pointsToIncreaseSpeed) {
     Snake_speed += speedIncrease;
-    elapsTime = 0;
+    lastScoreForSpeedIncrease = Math.floor(score / pointsToIncreaseSpeed) * pointsToIncreaseSpeed;
   }
 }
 
 function checkCollision(position) {
   const hitLeftWall = position.x < 1;
-  const hitRightWall = position.x > 24;
+  const hitRightWall = position.x > 25;
   const hitTopWall = position.y < 1;
-  const hitBottomWall = position.y > 20;
+  const hitBottomWall = position.y > 21;
   const selfCollision = hasSelfCollision(position);
 
   return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall || selfCollision;

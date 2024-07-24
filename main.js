@@ -1,5 +1,5 @@
-import { Snake_speed, updateSnake, drawSnake, snakeBody, gameState , elapsTime, setSnakeSpeed } from './snake.js';
-import { drawFood, updateFood , resetScore , resetFood } from './food.js';
+import { Snake_speed, updateSnake, drawSnake, snakeBody, gameState , setSnakeSpeed } from './snake.js';
+import { drawFood, updateFood , resetScore , resetFood, score } from './food.js';
 import {resetInputDirection} from './input.js';
 
 let lastTime = 0;
@@ -16,7 +16,7 @@ function main(currentTime) {
       resetButton.style.display = 'block';
       return;
     }
-  
+
     const deltaTime = currentTime - lastTime; 
     window.requestAnimationFrame(main);
   
@@ -24,14 +24,14 @@ function main(currentTime) {
   
     lastTime = currentTime;
   
-    update(deltaTime);
+    update();
     draw();
   }
 
 window.requestAnimationFrame(main);
 
-function update(deltaTime) {
-    updateSnake(deltaTime);
+function update() {
+    updateSnake();
     updateFood();
   }
   
