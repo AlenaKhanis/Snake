@@ -2,6 +2,20 @@ import { Snake_speed, updateSnake, drawSnake, snakeBody, gameState , setSnakeSpe
 import { drawFood, updateFood , resetScore , resetFood, score } from './food.js';
 import {resetInputDirection} from './input.js';
 
+
+
+
+function applyLightMode() {
+  document.body.classList.add('light-mode');
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  applyLightMode();
+});
+
+
+
 let lastTime = 0;
 const gameBoard = document.getElementById('game-board');
 const resetButton = document.getElementById('reset-button');

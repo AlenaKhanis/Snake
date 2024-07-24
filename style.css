@@ -9,6 +9,7 @@ body {
     background-color: #8AA48D;
     font-family: 'Courier New', Courier, monospace;
     overflow: hidden;
+    color: #000;
 }
 
 
@@ -145,8 +146,30 @@ body {
     z-index: 2; 
 }
 
+.light-mode {
+    background-color: #8AA48D;
+    color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #8AA48D;
+        color: #000;
+    }
+    
+    #game-board {
+        background-color: #8AA48D;
+        border: 1vmin dashed #000;
+    }
+    
+    .snake {
+        background-color: #000;
+    }
+}
+
+
 /* Mobile styles */
-@media (max-width: 768px) {
+@media (max-width: 768px)  {
     body {
         flex-direction: column;
         overflow: hidden;
