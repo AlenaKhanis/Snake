@@ -150,11 +150,13 @@ body {
     body {
         flex-direction: column;
         overflow: hidden;
+        background-color: #8AA48D;
     }
 
     #game-board {
         width: 90vw;
         height: 90vw;
+        background-color: #8AA48D;
     }
 
     #best-score, #score {
